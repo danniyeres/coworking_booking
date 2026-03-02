@@ -1,0 +1,53 @@
+users [icon: user, color: blue] {
+  id number pk
+  full_name string
+  email string unique
+  created_at timestamp
+}
+
+locations [icon: map-pin, color: orange] {
+  id number pk
+  name string
+  address string
+  city string
+  created_at timestamp
+}
+
+rooms [icon: door-open, color: purple] {
+  id number pk
+  location_id number
+  name string
+  capacity number
+  price_per_hour number
+}
+
+bookings [icon: calendar, color: green] {
+  id number pk
+  user_id number
+  room_id number
+  start_time timestamp
+  end_time timestamp
+  status string
+}
+
+payments [icon: credit-card, color: green] {
+  id number pk
+  booking_id number unique
+  amount number
+  status string
+}
+
+reviews [icon: message-square, color: yellow] {
+  id number pk
+  user_id number
+  location_id number
+  rating number
+  comment string
+}
+
+rooms.location_id > locations.id
+bookings.user_id > users.id
+bookings.room_id > rooms.id
+payments.booking_id > bookings.id
+reviews.user_id > users.id
+reviews.location_id > locations.id

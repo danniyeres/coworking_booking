@@ -25,6 +25,6 @@ env/
 # OS
 .DS_Store
 
-# Local DB (если используешь sqlite)
+# Local DB
 *.db
 *.sqlite3
